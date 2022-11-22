@@ -12,32 +12,33 @@ bool varA_in_varB(int varA, int varB)
 		varB *= -1;
 	}
 
-	int tempA = varA;
 	int tempB = varB;
-	bool aInB = true;
 	bool tempCheck = false;
-	do
+	while (varA != 0)
 	{
-		if (tempA % 10 == tempB % 10)
+		if (varA % 10 == varB % 10)
 		{
 			tempCheck = true;
 		}
-		if (tempB < 10)
+		if (varB < 10)
 		{
-			tempB = varB;
-			tempA /= 10;
+			varB = tempB;
+			varA /= 10;
 			if (tempCheck == false)
 			{
-				aInB = false;
-				break;
+				return false;
+			}
+			else
+			{
+				tempCheck = false;
 			}
 		}
 		else
 		{
-			tempB /= 10;
+			varB /= 10;
 		}
-	} while (tempA != 0);
-	return aInB;
+	}
+	return true;
 }
 
 int main()
